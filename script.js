@@ -1,3 +1,5 @@
+const display = document.querySelector('#display');
+
 // Math operators
 
 function add(a, b) {
@@ -38,7 +40,7 @@ function inputNumber() {
     for (let i = 0; i < buttonDigit.length; i++) {
         buttonDigit[i].addEventListener('click', function(e) {
             value.push(e.target.innerHTML);
-            console.log(value);
+            display.textContent = value.join('');
         });
     }
 }
@@ -51,7 +53,7 @@ function inputOperator() {
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
             operator = e.target.innerHTML;
-            console.log(operator);
+            display.textContent = operator;
         });
     }
 }
