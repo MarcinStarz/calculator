@@ -1,5 +1,6 @@
 const display = document.querySelector('#display');
 const storeNumber = [];
+let storeOperator = 0;
 
 // Math operators
 function add(a, b) {
@@ -20,13 +21,13 @@ function divide(a, b) {
 
 // Operate function. Takes an operator and two numbers then takes one of the above functions. Executed when user clicks the equal sign.
 function operate(num1, num2, operator) {
-    if (operator == 'add') {
+    if (operator == '+') {
         return add(num1, num2);
-    } else if (operator == 'subtract') {
+    } else if (operator == '-') {
         return subtract(num1, num2);
-    } else if (operator == 'multiply') {
+    } else if (operator == '*') {
         return multiply(num1, num2)
-    } else if (operator == 'divide') {
+    } else if (operator == '/') {
         return divide(num1, num2)
     } else console.log('ERR')
 }
@@ -61,10 +62,11 @@ function inputOperator() {
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
             operator = e.target.innerHTML;
-            display.textContent = operator;
+            console.log(operator);
+            storeOperator = operator;
         });
     }
 }
 
-inputNumber();
+inputNumber(); 
 inputOperator();
