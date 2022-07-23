@@ -33,12 +33,12 @@ function operate(num1, num2, operator) {
 
 // Number input listener function. Take digits, store them and display.
 function inputNumber() {
-    let value = [];
+    let value = '';
     const buttonDigit = document.querySelectorAll('.button__digit');
     for (let i = 0; i < buttonDigit.length; i++) {
         buttonDigit[i].addEventListener('click', function(e) {
-            value.push(e.target.innerHTML);
-            display.textContent = value.join('');
+            value += e.target.innerHTML;
+            display.textContent = value;
             console.log(value);
         });
     }
@@ -47,8 +47,8 @@ function inputNumber() {
     const buttonOperator = document.querySelectorAll('.button__operator');
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
-            storeNumber.push(value.join(''));
-            value = [];
+            storeNumber.push(value);
+            value = '';
             console.log(storeNumber);
     });
 };
