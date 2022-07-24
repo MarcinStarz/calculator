@@ -1,35 +1,39 @@
 const display = document.querySelector('#display');
-const storeNumber = [];
+let storeNumber = [];
 let storeOperator = 0;
 
 // Math operators
 function add(a, b) {
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
-    return a - b;
+    return Number(a) - Number(b);
 }
 
 function multiply(a, b) {
-    return a * b;
+    return Number(a) * Number(b);
 }
 
 function divide(a, b) {
-    return a/b;
+    return Number(a)/Number(b);
 }
 
 // Operate function. Takes an operator and two numbers then takes one of the above functions. Executed when user clicks the equal sign.
 function operate(num1, num2, operator) {
     if (operator == '+') {
-        return add(num1, num2);
+    let num = add(num1, num2);
+
     } else if (operator == '-') {
-        return subtract(num1, num2);
+        let num = subtract(num1, num2);
+
     } else if (operator == '*') {
-        return multiply(num1, num2)
+        let num = multiply(num1, num2);
+
     } else if (operator == '/') {
-        return divide(num1, num2)
-    } else console.log('ERR')
+        let num = divide(num1, num2);
+
+    }
 }
 
 // Number input listener function. Take digits, store them and display.
@@ -43,7 +47,7 @@ function inputNumber() {
             console.log(value);
         });
     }
-
+    
     // If operator is fired, store the inputted value in the storeNumber array and clear the value array for a next input.
     const buttonOperator = document.querySelectorAll('.button__operator');
     for (let i = 0; i < buttonOperator.length; i++) {
@@ -64,6 +68,7 @@ function inputOperator() {
             operator = e.target.innerHTML;
             console.log(operator);
             storeOperator = operator;
+            operate(storeNumber[0], storeNumber[1], storeOperator);
         });
     }
 }
