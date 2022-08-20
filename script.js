@@ -24,25 +24,25 @@ function divide(a, b) {
 function operate(num1, num2, operator) {
     if (operator == '+' && storeNumber.length == 2) {
     let num = add(num1, num2);
-    resultHistory.push(storeNumber);
+    resultHistory.push(...storeNumber);
     storeNumber = [];
     storeNumber.push(num);
 
     } else if (operator == '-' && storeNumber.length == 2) {
         let num = subtract(num1, num2);
-        resultHistory.push(storeNumber);
+        resultHistory.push(...storeNumber);
         storeNumber = [];
         storeNumber.push(num);
 
     } else if (operator == '*' && storeNumber.length == 2) {
         let num = multiply(num1, num2);
-        resultHistory.push(storeNumber);
+        resultHistory.push(...storeNumber);
         storeNumber = [];
         storeNumber.push(num);
 
     } else if (operator == '/' && storeNumber.length == 2) {
         let num = divide(num1, num2);
-        resultHistory.push(storeNumber);
+        resultHistory.push(...storeNumber);
         storeNumber = [];
         storeNumber.push(num);
     }
