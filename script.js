@@ -59,18 +59,20 @@ function inputNumber() {
             value += e.target.innerHTML;
             display.textContent = value;
             console.log(value);
-        });
+        })
     }
-    
+
     // If operator is fired, store the inputted value in the storeNumber array and clear the value array for a next input.
     const buttonOperator = document.querySelectorAll('.button__operator');
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
-            storeNumber.push(value);
-            value = '';
-            console.log(storeNumber);
-    });
-};
+                if (value) {
+                    storeNumber.push(value);
+                    value = '';
+                    console.log(storeNumber);    
+                }
+            });
+    };
 };
 
 // Operator input listener function.
