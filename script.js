@@ -27,27 +27,28 @@ function operate(num1, num2, operator) {
     resultHistory.push(...storeNumber);
     storeNumber = [];
     storeNumber.push(num);
-
-    } else if (operator == '-' && storeNumber.length == 2) {
-        let num = subtract(num1, num2);
-        resultHistory.push(...storeNumber);
-        storeNumber = [];
-        storeNumber.push(num);
-
-    } else if (operator == '*' && storeNumber.length == 2) {
-        let num = multiply(num1, num2);
-        resultHistory.push(...storeNumber);
-        storeNumber = [];
-        storeNumber.push(num);
-
-    } else if (operator == '/' && storeNumber.length == 2) {
-        let num = divide(num1, num2);
-        resultHistory.push(...storeNumber);
-        storeNumber = [];
-        storeNumber.push(num);
-    }
-    console.log(resultHistory)
-    console.log(storeNumber)
+    
+} else if (operator == '-' && storeNumber.length == 2) {
+    let num = subtract(num1, num2);
+    resultHistory.push(...storeNumber);
+    storeNumber = [];
+    storeNumber.push(num);
+    
+} else if (operator == '*' && storeNumber.length == 2) {
+    let num = multiply(num1, num2);
+    resultHistory.push(...storeNumber);
+    storeNumber = [];
+    storeNumber.push(num);
+    
+} else if (operator == '/' && storeNumber.length == 2) {
+    let num = divide(num1, num2);
+    resultHistory.push(...storeNumber);
+    storeNumber = [];
+    storeNumber.push(num);
+}
+console.log(resultHistory)
+console.log(storeNumber)
+display.textContent = storeNumber;
 }
 
 // Number input listener function. Take digits, store them and display.
