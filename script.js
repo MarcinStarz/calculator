@@ -115,12 +115,13 @@ function inputOperator() {
     };
 };
 
-// Equals oparation.
+// Equals oparation. Display the result of equation.
 function equals() {
     const buttonEquals = document.querySelector('.button__equals');
     buttonEquals.addEventListener('click', () => {
         if (storeNumber.length >= 2) {
-            operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+            const calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+            display.textContent = calculate;
             storeNumber = [];
         }
     });
