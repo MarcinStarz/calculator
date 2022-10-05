@@ -115,6 +115,12 @@ function inputOperator() {
     };
 };
 
+function evaluatePair() {
+    if (storeNumber.length === 2) {
+        operate()
+    }
+}
+
 // Equals oparation. Display the result of equation.
 function equals() {
     const buttonEquals = document.querySelector('.button__equals');
@@ -122,7 +128,9 @@ function equals() {
         if (storeNumber.length >= 2) {
             const calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
             display.textContent = calculate;
+            console.log(calculate);
             storeNumber = [];
+            storeNumber.push(calculate);
         }
     });
 };
