@@ -24,46 +24,15 @@ function divide(a, b) {
 function operate(operator, num1, num2) {
     switch(operator) {
         case '+':
-            return add(num1, num2);
+            return add(num1, num2).toFixed(7);
         case '-':
-            return subtract(num1, num2);
+            return subtract(num1, num2).toFixed(7);
         case '*':
-            return multiply(num1, num2);
+            return multiply(num1, num2).toFixed(7);
         case '/':
-            return divide(num1, num2);
+            return divide(num1, num2).toFixed(7);
     };
 };
-
-// // Operate function. Takes an operator and two numbers then takes one of the above functions. Executed when user clicks the equal sign.
-// function operate(num1, num2, operator) {
-//     if (operator == '+' && storeNumber.length == 2) {
-//     let num = add(num1, num2);
-//     resultHistory.push(...storeNumber);
-//     storeNumber = [];
-//     storeNumber.push(num);
-    
-// } else if (operator == '-' && storeNumber.length == 2) {
-//     let num = subtract(num1, num2);
-//     resultHistory.push(...storeNumber);
-//     storeNumber = [];
-//     storeNumber.push(num);
-    
-// } else if (operator == '*' && storeNumber.length == 2) {
-//     let num = multiply(num1, num2);
-//     resultHistory.push(...storeNumber);
-//     storeNumber = [];
-//     storeNumber.push(num);
-    
-// } else if (operator == '/' && storeNumber.length == 2) {
-//     let num = divide(num1, num2);
-//     resultHistory.push(...storeNumber);
-//     storeNumber = [];
-//     storeNumber.push(num);
-// }
-// console.log(resultHistory)
-// console.log(storeNumber)
-// display.textContent = storeNumber;
-// }
 
 // Number input listener function. Take digits, store them and display.
 function inputNumber() {
