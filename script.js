@@ -1,6 +1,6 @@
 const display = document.querySelector('#display');
 
-// let resultHistory = [];
+let resultHistory = [];
 let storeNumber = [];
 let storeOperator;
 
@@ -108,6 +108,7 @@ function inputOperator() {
     const buttonOperator = document.querySelectorAll('.button__operator');
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
+            evaluatePair();
             operator = e.target.innerHTML;
             console.log(operator);
             storeOperator = operator;
@@ -117,9 +118,14 @@ function inputOperator() {
 
 function evaluatePair() {
     if (storeNumber.length === 2) {
-        operate()
-    }
-}
+        const result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+        resultHistory = storeNumber;
+        console.log(resultHistory);
+        storeNumber = [];
+        storeNumber.push(result);
+        console.log(result);
+    };
+};
 
 // Equals oparation. Display the result of equation.
 function equals() {
