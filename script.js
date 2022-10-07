@@ -7,19 +7,19 @@ let storeOperator;
 // Math operators
 function add(a, b) {
     return a + b;
-}
+};
 
 function subtract(a, b) {
     return a - b;
-}
+};
 
 function multiply(a, b) {
     return a * b;
-}
+};
 
 function divide(a, b) {
     return a/b;
-}
+};
 
 function operate(operator, num1, num2) {
     switch(operator) {
@@ -95,6 +95,7 @@ function inputNumber() {
                 console.log(resultHistory);
                 storeNumber = [];
                 storeNumber.push(result);
+                display.textContent = result;
                 console.log(result);
             };
         };
@@ -145,10 +146,6 @@ function falseOperator() {
         console.log(resultHistory);
     };
 };
-
-// function resultHistory() {
-
-// }
 
 inputNumber(); 
 inputOperator();
