@@ -62,54 +62,54 @@ function inputNumber() {
     const buttonOperator = document.querySelectorAll('.button__operator');
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
-                if (value) {
+            if (value) {
                     pushIndex();
                     storeNumber.push(value);
                     value = '';
                     console.log(storeNumber);    
                 }
             });
-    };
-};
-
-// Operator input listener function.
-function inputOperator() {
-    let operator = 0;
-    const buttonOperator = document.querySelectorAll('.button__operator');
-    for (let i = 0; i < buttonOperator.length; i++) {
-        buttonOperator[i].addEventListener('click', function(e) {
-            evaluatePair();
-            operator = e.target.innerHTML;
-            console.log(operator);
-            storeOperator = operator;
-        });
-    };
-};
-
-function evaluatePair() {
-    if (storeNumber.length === 2) {
-        let result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
-        if (result) {
-            resultHistory.push(...storeNumber);
-            console.log(resultHistory);
-            storeNumber = [];
-            storeNumber.push(result);
-            console.log(result);
         };
     };
-};
-
-// Equals oparation. Display the result of equation.
-function equals() {
-    const buttonEquals = document.querySelector('.button__equals');
-    buttonEquals.addEventListener('click', () => {
-        if (storeNumber.length >= 2) {
-            let calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
-            display.textContent = calculate;
-            console.log(calculate);
-            resultHistory.push(...storeNumber);
-            storeNumber = [];
-            storeNumber.push(calculate);
+    
+    // Operator input listener function.
+    function inputOperator() {
+        let operator = 0;
+        const buttonOperator = document.querySelectorAll('.button__operator');
+        for (let i = 0; i < buttonOperator.length; i++) {
+            buttonOperator[i].addEventListener('click', function(e) {
+                evaluatePair();
+                operator = e.target.innerHTML;
+                console.log(operator);
+                storeOperator = operator;
+            });
+        };
+    };
+    
+    function evaluatePair() {
+        if (storeNumber.length === 2) {
+            let result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+            if (result) {
+                resultHistory.push(...storeNumber);
+                console.log(resultHistory);
+                storeNumber = [];
+                storeNumber.push(result);
+                console.log(result);
+            };
+        };
+    };
+    
+    // Equals oparation. Display the result of equation.
+    function equals() {
+        const buttonEquals = document.querySelector('.button__equals');
+        buttonEquals.addEventListener('click', () => {
+            if (storeNumber.length >= 2) {
+                let calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+                display.textContent = calculate;
+                console.log(calculate);
+                resultHistory.push(...storeNumber);
+                storeNumber = [];
+                storeNumber.push(calculate);
             storeOperator = false;
         }
     });
@@ -123,8 +123,8 @@ function floatFix(num) { {
 
 //When user omits operator and proceeds to typing number after equation, push first index to resultHistory.
 function pushIndex() {
-    if (storeNumber >= 2) {
-        remove = storeNumber.shift();
+    if (storeNumber.length > 2) {
+        const remove = storeNumber.shift();
         resultHistory.push(remove);
         console.log(resultHistory);
     };
