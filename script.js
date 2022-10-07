@@ -24,13 +24,13 @@ function divide(a, b) {
 function operate(operator, num1, num2) {
     switch(operator) {
         case '+':
-            return add(num1, num2).toFixed(7);
+            return add(num1, num2);
         case '-':
-            return subtract(num1, num2).toFixed(7);
+            return subtract(num1, num2);
         case '*':
-            return multiply(num1, num2).toFixed(7);
+            return multiply(num1, num2);
         case '/':
-            return divide(num1, num2).toFixed(7);
+            return divide(num1, num2);
     };
 };
 
@@ -63,6 +63,7 @@ function inputNumber() {
     for (let i = 0; i < buttonOperator.length; i++) {
         buttonOperator[i].addEventListener('click', function(e) {
                 if (value) {
+                    pushIndex();
                     storeNumber.push(value);
                     value = '';
                     console.log(storeNumber);    
@@ -87,12 +88,14 @@ function inputOperator() {
 
 function evaluatePair() {
     if (storeNumber.length === 2) {
-        const result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
-        resultHistory = storeNumber;
-        console.log(resultHistory);
-        storeNumber = [];
-        storeNumber.push(result);
-        console.log(result);
+        let result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+        if (result) {
+            resultHistory.push(...storeNumber);
+            console.log(resultHistory);
+            storeNumber = [];
+            storeNumber.push(result);
+            console.log(result);
+        };
     };
 };
 
@@ -101,15 +104,39 @@ function equals() {
     const buttonEquals = document.querySelector('.button__equals');
     buttonEquals.addEventListener('click', () => {
         if (storeNumber.length >= 2) {
-            const calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+            let calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
             display.textContent = calculate;
             console.log(calculate);
+            resultHistory.push(...storeNumber);
             storeNumber = [];
             storeNumber.push(calculate);
+            storeOperator = false;
         }
     });
+};
+ 
+//Fix decimal if float is longer than 7.
+function floatFix(num) { {
+        return parseFloat(num.toFixed(7));
+    };
+};
+
+//When user omits operator and proceeds to typing number after equation, push first index to resultHistory.
+function pushIndex() {
+    if (storeNumber >= 2) {
+        remove = storeNumber.shift();
+        resultHistory.push(remove);
+        console.log(resultHistory);
+    };
+};
+
+// Clear calculator.
+function clear() {
+    const clearButton = document.querySelector('.button__clear');
+    clearButton.addEventListener('click', () => window.location.reload());
 };
 
 inputNumber(); 
 inputOperator();
 equals();
+clear();
