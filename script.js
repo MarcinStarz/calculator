@@ -90,7 +90,9 @@ function inputNumber() {
     function evaluatePair() {
         if (storeNumber.length === 2) {
             let result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
-            if (result) {
+            console.log(typeof result)
+            divideByZero(result);
+            if (typeof result == 'number' && result != Infinity) {
                 resultHistory.push(...storeNumber);
                 console.log(resultHistory);
                 storeNumber = [];
@@ -144,6 +146,14 @@ function falseOperator() {
         const remove = storeNumber.shift();
         resultHistory.push(remove);
         console.log(resultHistory);
+    };
+};
+
+function divideByZero(a) {
+    if (a == Infinity) {
+        display.textContent = "NANANA"
+        storeNumber = [];
+        storeOperator = false;
     };
 };
 
