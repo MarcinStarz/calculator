@@ -78,6 +78,7 @@ function inputNumber() {
         const buttonOperator = document.querySelectorAll('.button__operator');
         for (let i = 0; i < buttonOperator.length; i++) {
             buttonOperator[i].addEventListener('click', function(e) {
+                falseOperator();
                 evaluatePair();
                 operator = e.target.innerHTML;
                 console.log(operator);
@@ -134,6 +135,15 @@ function pushIndex() {
 function clear() {
     const clearButton = document.querySelector('.button__clear');
     clearButton.addEventListener('click', () => window.location.reload());
+};
+
+// After equation if there's no next operator, move the calculation result to resultHistory.
+function falseOperator() {
+    if (storeOperator === false) {
+        const remove = storeNumber.shift();
+        resultHistory.push(remove);
+        console.log(resultHistory);
+    };
 };
 
 inputNumber(); 
