@@ -78,11 +78,11 @@ function inputNumber() {
         const buttonOperator = document.querySelectorAll('.button__operator');
         for (let i = 0; i < buttonOperator.length; i++) {
             buttonOperator[i].addEventListener('click', function(e) {
-                falseOperator();
                 evaluatePair();
                 operator = e.target.innerHTML;
                 console.log(operator);
                 storeOperator = operator;
+                falseOperator();
             });
         };
     };
@@ -124,7 +124,7 @@ function floatFix(num) { {
 
 //When user omits operator and proceeds to typing number after equation, push first index to resultHistory.
 function pushIndex() {
-    if (storeNumber.length > 2) {
+    if (storeOperator === false) {
         const remove = storeNumber.shift();
         resultHistory.push(remove);
         console.log(resultHistory);
@@ -145,6 +145,10 @@ function falseOperator() {
         console.log(resultHistory);
     };
 };
+
+// function resultHistory() {
+
+// }
 
 inputNumber(); 
 inputOperator();
