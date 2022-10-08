@@ -40,11 +40,18 @@ function inputNumber() {
     const buttonDigit = document.querySelectorAll('.button__digit');
     for (let i = 0; i < buttonDigit.length; i++) {
         buttonDigit[i].addEventListener('click', function(e) {
+            if (value.length >= 7) return;
             value += e.target.innerHTML;
             display.textContent = value;
             console.log(value);
         });
     };
+    const decimalButton = document.querySelector('.button__decimal');
+    decimalButton.addEventListener('click', (e) => {
+        if (value.includes('.')) return;
+        value += e.target.innerHTML;
+        display.textContent = value;
+    });
 
     // If equal is fired, store the inputted value in the storeNumber array and clear the value array for a next input. If storeNumber is empty do nothing.
     const buttonEquals = document.querySelector('.button__equals');
@@ -89,8 +96,7 @@ function inputNumber() {
     
     function evaluatePair() {
         if (storeNumber.length === 2) {
-            let result = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
-            console.log(typeof result)
+            let result = operate(storeOperator, parseFloat(storeNumber[0]), parseFloat(storeNumber[1]));
             divideByZero(result);
             if (typeof result == 'number' && result != Infinity) {
                 resultHistory.push(...storeNumber);
@@ -98,7 +104,7 @@ function inputNumber() {
                 storeNumber = [];
                 storeNumber.push(result);
                 display.textContent = result;
-                console.log(result);
+                console.log(typeof result);
             };
         };
     };
@@ -108,7 +114,7 @@ function inputNumber() {
         const buttonEquals = document.querySelector('.button__equals');
         buttonEquals.addEventListener('click', () => {
             if (storeNumber.length >= 2) {
-                let calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
+                let calculate = operate(storeOperator, parseFloat(storeNumber[0]), parseFloat(storeNumber[1]));
                 divideByZero(calculate);
                 if (typeof calculate == 'number' && calculate != Infinity) {
                     display.textContent = calculate;
@@ -121,7 +127,13 @@ function inputNumber() {
         };
     });
 };
- 
+
+// Clear calculator.
+function clear() {
+    const clearButton = document.querySelector('.button__clear');
+    clearButton.addEventListener('click', () => window.location.reload());
+};
+
 //Fix decimal if float is longer than 7.
 function floatFix(num) { {
         return parseFloat(num.toFixed(7));
@@ -135,12 +147,6 @@ function pushIndex() {
         resultHistory.push(remove);
         console.log(resultHistory);
     };
-};
-
-// Clear calculator.
-function clear() {
-    const clearButton = document.querySelector('.button__clear');
-    clearButton.addEventListener('click', () => window.location.reload());
 };
 
 // After equation if there's no next operator, move the calculation result to resultHistory.
