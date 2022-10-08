@@ -109,13 +109,16 @@ function inputNumber() {
         buttonEquals.addEventListener('click', () => {
             if (storeNumber.length >= 2) {
                 let calculate = operate(storeOperator, parseInt(storeNumber[0]), parseInt(storeNumber[1]));
-                display.textContent = calculate;
-                console.log(calculate);
-                resultHistory.push(...storeNumber);
-                storeNumber = [];
-                storeNumber.push(calculate);
-            storeOperator = false;
-        }
+                divideByZero(calculate);
+                if (typeof calculate == 'number' && calculate != Infinity) {
+                    display.textContent = calculate;
+                    console.log(calculate);
+                    resultHistory.push(...storeNumber);
+                    storeNumber = [];
+                    storeNumber.push(calculate);
+                }
+                storeOperator = false;
+        };
     });
 };
  
