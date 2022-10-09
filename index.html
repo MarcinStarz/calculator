@@ -3,32 +3,45 @@
     <head>
         <meta charset="utf-8">
         <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="calculator">
-            <div id="display">DUMMY TEXT</div>
+            <div id="display">0</div>
 
-            <div id="buttons">
-                <button class="button__digit">1</button>
-                <button class="button__digit">2</button>
-                <button class="button__digit">3</button>
-                <button class="button__digit">4</button>
-                <button class="button__digit">5</button>
-                <button class="button__digit">6</button>
-                <button class="button__digit">7</button>
-                <button class="button__digit">8</button>
-                <button class="button__digit">9</button>
-                <button class="button__digit">0</button>
-                <button class="button__operator">+</button>
-                <button class="button__operator">-</button>
-                <button class="button__operator">*</button>
-                <button class="button__operator">/</button>
-                <button class="button__decimal">.</button>
-                <button class="button__equals">=</button>
-                <button class="button__clear">CLEAR</button>
-            </div>
+            <!-- <div id="buttons"> -->
+                <div id="clear-delete">
+                      <button class="button__clear">CLEAR</button>
+                      <button class="button__delete">DELETE</button>
+                </div>
+
+                <div id="numerical">
+                    <button class="button__digit 7">7</button>
+                    <button class="button__digit 8">8</button>
+                    <button class="button__digit 9">9</button>
+                    <button class="button__operator /">/</button>
+
+                    <button class="button__digit 4">4</button>
+                    <button class="button__digit 5">5</button>
+                    <button class="button__digit 6">6</button>
+                    <button class="button__operator *">*</button>
+
+                    <button class="button__digit 1">1</button>
+                    <button class="button__digit 2">2</button>
+                    <button class="button__digit 3">3</button>
+                    <button class="button__operator -">-</button>
+                    
+                    <button class="button__decimal .">.</button>
+                    <button class="button__digit 0">0</button>
+                    <button class="button__equals =">=</button>
+                    <button class="button__operator +">+</button>
+                </div>
+            <!-- </div> -->
         </div>
-
+        
         <script src="script.js"></script>
     </body>
-</html>
+    </html>
