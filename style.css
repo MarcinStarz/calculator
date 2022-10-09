@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+#calculator {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-around;
+    width: 20rem;
+    height: 30rem;
+    border-radius: 20px;
+    background-color: blanchedalmond;
+}
+
+#display {
+    font-family: 'Silkscreen', cursive;
+    font-size: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgb(183, 183, 183);
+    border-radius: 12px;
+    width: 260px;
+    height: 80px;
+}
+
+#clear-delete {
+    display: flex;
+    justify-content: center;
+    width: 260px;
+    gap: 15px;
+    height: 40px;
+}
+
+.button__clear,
+.button__delete {
+    flex-grow: 1;
+}
+
+#numerical {
+    width: 260px;
+    height: 260px;
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    gap: 15px;
+};
