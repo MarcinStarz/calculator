@@ -27,9 +27,9 @@ function operate(operator, num1, num2) {
             return add(num1, num2);
         case '-':
             return subtract(num1, num2);
-        case '*':
+        case 'x':
             return multiply(num1, num2);
-        case '/':
+        case '÷':
             return divide(num1, num2);
     };
 };
@@ -42,14 +42,24 @@ function inputNumber() {
         buttonDigit[i].addEventListener('click', function(e) {
             if (value.length >= 7) return;
             value += e.target.innerHTML;
+            console.log(typeof value)
             display.textContent = value;
             console.log(value);
         });
     };
+
+    // Decimal input.
     const decimalButton = document.querySelector('.button__decimal');
     decimalButton.addEventListener('click', (e) => {
         if (value.includes('.')) return;
         value += e.target.innerHTML;
+        display.textContent = value;
+    });
+
+    // Delete last inputted value.
+    const deleteButton = document.querySelector('.button__delete');
+    deleteButton.addEventListener('click', () => {
+        value = value.slice(0, -1);
         display.textContent = value;
     });
 
