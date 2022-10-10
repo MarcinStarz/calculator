@@ -1,4 +1,5 @@
 const display = document.querySelector('#display');
+const lastOperation = document.querySelector('.last__operation')
 
 let resultHistory = [];
 let storeNumber = [];
@@ -41,6 +42,8 @@ function inputNumber() {
     for (let i = 0; i < buttonDigit.length; i++) {
         buttonDigit[i].addEventListener('click', function(e) {
             if (value.length >= 7) return;
+            let input = e.target.innerHTML;
+            if (!value && input == 0) return;
             value += e.target.innerHTML;
             console.log(typeof value)
             display.textContent = value;
@@ -100,6 +103,7 @@ function inputNumber() {
                 console.log(operator);
                 storeOperator = operator;
                 falseOperator();
+                display.textContent = storeOperator;
             });
         };
     };
