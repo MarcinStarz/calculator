@@ -112,6 +112,7 @@ function inputNumber() {
         if (storeNumber.length === 2) {
             let result = operate(storeOperator, parseFloat(storeNumber[0]), parseFloat(storeNumber[1]));
             divideByZero(result);
+            refult = floatFix(result);
             if (typeof result == 'number' && result != Infinity) {
                 resultHistory.push(...storeNumber);
                 console.log(resultHistory);
@@ -130,6 +131,8 @@ function inputNumber() {
             if (storeNumber.length >= 2) {
                 let calculate = operate(storeOperator, parseFloat(storeNumber[0]), parseFloat(storeNumber[1]));
                 divideByZero(calculate);
+                console.log(calculate.length);
+                calculate = floatFix(calculate);
                 if (typeof calculate == 'number' && calculate != Infinity) {
                     display.textContent = calculate;
                     console.log(calculate);
@@ -148,9 +151,10 @@ function clear() {
     clearButton.addEventListener('click', () => window.location.reload());
 };
 
-//Fix decimal if float is longer than 7.
-function floatFix(num) { {
-        return parseFloat(num.toFixed(7));
+// Fix decimal if float is longer than 7.
+function floatFix(num) {
+    if (num.toString().length > 5) {
+        return parseFloat(num.toFixed(5));
     };
 };
 
